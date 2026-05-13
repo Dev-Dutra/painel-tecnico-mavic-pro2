@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tabData = {
    drone: {
-            img: "drone_perspectiva.png",
+            img: "assets/imagens/drone_perspectiva.png",
             tag: "DIAGNÓSTICO GERAL",
             html: `
                 <h3 class="detail-title" style="color: #ffffff; margin-bottom: 5px; font-size: 1.2rem; letter-spacing: 1px;">MAVIC PRO 2</h3>
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`
         },
      vlos: {
-            img: "voo.png",
+            img: "assets/imagens/voo.png",
             tag: "SISTEMA DE OPERAÇÃO",
             html: `
                 <h3 class="detail-title" style="color: #ffffff; margin-bottom: 5px; font-size: 1.2rem; letter-spacing: 1px;">REGRAS DE OPERAÇÃO</h3>
