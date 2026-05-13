@@ -1,0 +1,370 @@
+            <!-- Desenvolvedora Yasmim Dutra (Dev-Dutra) -->
+             
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA MAVIC PRO 2 - HUD COMPLETO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-wrapper">
+        <div class="grid-layer"></div>
+        <div class="scan-line"></div>
+    </div>
+
+    <header class="interface-header">
+        <h1>SISTEMA DE DIAGNÓSTICO MAVIC PRO 2</h1>
+    </header>
+
+    <main class="page-content">
+
+        <div class="main-container">
+
+            <!-- SEÇÃO DOS DRONES -->
+            <section class="drone-grid">
+                <!-- VISTA SUPERIOR -->
+                <div class="drone-map">
+                    <img src="drone_superior.png" alt="Vista Superior" class="floating-image"
+                        style="width:300px; height: auto;">
+
+                    <!-- PONTO 1: BRAÇO -->
+                    <div class="hotspot" style="top: 16%; left: 28%;" data-title="BRAÇO RETRÁTIL" data-img="braco.png"
+                        data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>Serve como suporte para os motores e hélices. Sendo retrátil, ele permite que o drone se torne compacto para transporte, além de absorver parte das vibrações durante o voo.<br><br><span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> Verifique se as articulações estão totalmente estendidas e sem folgas mecânicas antes de armar os motores.<br><br><span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span><ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'><li>•Fadiga de material nas dobradiças</li><li>• Travamento incompleto da extensão</li><li>• Fissuras estruturais por impacto anterior</li></ul></div>">
+
+                        <button class="cyber-btn"></button>
+
+                        <div class="tooltip-wrapper">
+                            <div class="tooltip-line"></div>
+                            <div class="cyber-tooltip">
+                                <strong>BRAÇO RETRÁTIL</strong>
+                                <p>Parte da estrutura principal do chassi, construída em polímero reforçado ou fibra de
+                                    carbono.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PONTO 2: MOTORES -->
+                    <!-- PONTO 2: MOTORES -->
+                    <div class="hotspot" style="top: 14%; left: 78%;" data-title="MOTORES BRUSHLESS"
+                        data-img="motor.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Responsáveis por converter a energia da bateria em movimento rotacional. Por não possuírem escovas físicas, eles têm menos desgaste, geram menos calor e permitem um controle extremamente preciso.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> Gire os motores manualmente antes de ligar para garantir que não existam detritos ou resistência magnética anormal.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Obstrução por areia ou detritos internos</li>
+        <li>• Sobrecarga por desbalanceamento de hélice</li>
+        <li>• Curto-circuito nos enrolamentos de cobre</li>
+    </ul></div>">
+
+                        <button class="cyber-btn"></button>
+                        <div class="tooltip-wrapper reverse">
+                            <div class="tooltip-line"></div>
+                            <div class="cyber-tooltip">
+                                <strong>MOTOR</strong>
+                                <p>Motores elétricos de alta eficiência magnética.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PONTO 3: Bateria -->
+
+                    <div class="hotspot" style="top: 24%; left: 47%;" data-title="BATERIA INTELIGENTE"
+                        data-img="bateria.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    É o coração energético do drone. O sistema inteligente monitora a voltagem de cada célula, a temperatura e o ciclo de vida, informando o tempo de voo em tempo real.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> A bateria possui presilhas laterais de pressão. A operação só é considerada segura após o piloto ouvir o 'clique sonoro' de encaixe.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Desconexão em voo por encaixe incompleto</li>
+        <li>• Superaquecimento das células (Estufamento)</li>
+        <li>• Erro de comunicação BMS (Dados de telemetria ausentes)</li>
+    </ul></div>">
+
+                        <button class="cyber-btn"></button>
+                        <div class="tooltip-wrapper">
+                            <div class="tooltip-line"></div>
+                            <div class="cyber-tooltip">
+                                <strong>BATERIA</strong>
+                                <p>Conjunto de células de polímero de lítio com um sistema de gerenciamento (BMS)
+                                    integrado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PONTO 4: HÉLICES -->
+                    <div class="hotspot" style="top: 72%; left: 95%;" data-title="HÉLICES DE BAIXO RUÍDO"
+                        data-img="helice.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Geram a sustentação (lift) necessária para o voo. O design específico 'low-noise' reduz a perturbação do ar, resultando em um voo mais silencioso e maior eficiência energética.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> O encaixe possui marcações específicas. Hélices com círculos brancos ou prateados devem ser montadas apenas nos motores com a mesma marcação.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Microfissuras ou deformações nas lâminas</li>
+        <li>• Desgaste na trava de engate rápido (Quick-Release)</li>
+        <li>• Vibração excessiva por hélices desbalanceadas</li>
+    </ul></div>">
+
+                        <button class="cyber-btn"></button>
+                        <div class="tooltip-wrapper reverse">
+                            <div class="tooltip-line"></div>
+                            <div class="cyber-tooltip">
+                                <strong>HÉLICE</strong>
+                                <p>Lâminas aerodinâmicas com design de ponta curvada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISTA PERSPECTIVA -->
+                    <div class="drone-map">
+                        <img src="drone_perspectiva.png" alt="Vista Superior" class="floating-image"
+                            style="width:280px; height: auto;">
+
+                        <!-- PONTO 5: CÂMERA -->
+                        <!-- PONTO 5: CÂMERA -->
+                        <div class="hotspot" style="top: 53%; left: 36%;" data-title="CÂMERA HASSELBLAD"
+                            data-img="camera.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Capta fotos de 20MP e vídeos em 4K. O sensor de 1 polegada permite um desempenho superior em condições de baixa luminosidade e um alcance dinâmico de cores muito maior (Dlog-M de 10 bits).<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> Remova a trava de proteção do gimbal antes de ligar a aeronave para evitar danos por obstrução mecânica.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Erro de gravação no cartão MicroSD</li>
+        <li>• Superaquecimento do sensor de imagem</li>
+        <li>• Desfoque por vibração excessiva (Jello effect)</li>
+    </ul></div>">
+
+                            <button class="cyber-btn"></button>
+                            <div class="tooltip-wrapper">
+                                <div class="tooltip-line"></div>
+                                <div class="cyber-tooltip">
+                                    <strong>CÂMERA</strong>
+                                    <p>Dispositivo de captura de imagem de alta resolução com óptica profissional.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PONTO 6: GIMBAL -->
+                        <div class="hotspot" style="top: 65%; left: 45%;" data-title="ESTABILIZADOR GIMBAL"
+                            data-img="gimbal.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Anula os movimentos de inclinação, rotação e guinada do drone. Isso garante que a imagem da câmera permaneça perfeitamente estável e nivelada no horizonte, mesmo que o drone esteja se inclinando bruscamente ou enfrentando ventos fortes.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> O gimbal deve mover-se livremente no autoteste. Qualquer resistência física pode forçar os motores e causar danos permanentes.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Vibração anormal no vídeo (Gimbal Vibration)</li>
+        <li>• Horizonte inclinado ou desalinhado</li>
+        <li>• Travamento dos eixos por acúmulo de poeira</li>
+    </ul></div>">
+
+                            <button class="cyber-btn"></button>
+                            <div class="tooltip-wrapper">
+                                <div class="tooltip-line"></div>
+                                <div class="cyber-tooltip">
+                                    <strong>GIMBAL</strong>
+                                    <p>Estabilização 3-eixos. Um sistema de suporte mecânico motorizado.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PONTO 7: ANTENAS -->
+                        <div class="hotspot" style="top: 78%; left: 71%;" data-title="ANTENA (SISTEMA OCUSYNC)"
+                            data-img="antena.png" data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Responsáveis pela comunicação entre o drone e o rádio controle. Elas transmitem os comandos de voo para o drone e recebem de volta o sinal de vídeo em HD e os dados de telemetria.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> Mantenha as antenas desobstruídas e direcione-as corretamente para garantir o alcance máximo e evitar perda de sinal (Failsafe).<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Interferência de rádio (RFI) em áreas urbanas</li>
+        <li>• Rompimento interno do cabo coaxial</li>
+        <li>• Queda drástica de bitrate no link de vídeo</li>
+    </ul></div>">
+
+                            <button class="cyber-btn"></button>
+                            <div class="tooltip-wrapper reverse">
+                                <div class="tooltip-line"></div>
+                                <div class="cyber-tooltip">
+                                    <strong>ANTENA</strong>
+                                    <p>Transmissores e receptores de rádio integrados (geralmente nos suportes de pouso).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PONTO 8: LED DE POSIÇÃO -->
+                        <div class="hotspot" style="top: 60%; left: 9%;" data-title="LED INDICADOR" data-img="led.png"
+                            data-extra="<div style='border-left: 2px solid #00f3ff; padding-left: 15px; margin-left: 5px; color: white;'>
+    Servem para orientação visual do piloto (identificar a frente e a traseira à distância) e para comunicar o estado do sistema através de códigos de cores.<br><br>
+    <span style='color: yellow; font-weight: bold;'>ATENÇÃO:</span> Decole apenas quando o LED estiver verde pulsante (GPS fixado). LEDs vermelhos piscando rápido indicam erro crítico ou bateria abaixo de 10%.<br><br>
+    <span style='color: #ff4444; font-weight: bold;'>POSSÍVEIS FALHAS:</span>
+    <ul style='margin-top: 5px; color: white; list-style: none; padding-left: 0;'>
+        <li>• Queima de diodo por curto-circuito</li>
+        <li>• Erro de IMU (Amarelo piscando rápido)</li>
+        <li>• Falha na sincronização do ESC (Vermelho sólido)</li>
+    </ul></div>">
+
+                            <button class="cyber-btn"></button>
+                            <div class="tooltip-wrapper">
+                                <div class="tooltip-line"></div>
+                                <div class="cyber-tooltip">
+                                    <strong>LED</strong>
+                                    <p>Indicadores luminosos de alta intensidade (LEDs coloridos).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <aside class="side-panel">
+
+                <!-- Novos botões de aba -->
+                <div class="panel-tabs" style="display: flex; gap: 5px; margin-bottom: 15px;">
+                    <button id="tab-drone" class="tab-btn active" onclick="switchTab('drone')"
+                        style="flex: 1; padding: 10px; background: rgba(0, 242, 255, 0.1); border: 1px solid #00f2ff; color: #00f2ff; cursor: pointer; font-family: 'Rajdhani'; font-weight: bold; transition: 0.3s;">
+                        AERONAVE
+                    </button>
+                    <button id="tab-vlos" class="tab-btn" onclick="switchTab('vlos')"
+                        style="flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; cursor: pointer; font-family: 'Rajdhani'; font-weight: bold; transition: 0.3s;">
+                        OPERAÇÕES
+                    </button>
+                </div>
+
+                <div class="panel-image-container">
+                    <img src="drone_superior.png" id="panel-img" alt="Componente">
+                </div>
+
+                <div class="panel-body">
+                    <div class="panel-tag" id="panel-tag">SISTEMA DE DIAGNÓSTICO</div>
+                    <div id="side-panel-content">
+                        <!-- O conteúdo será injetado aqui pelo JavaScript -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Painel de Comandos e Checklist -->
+        <div class="bottom-interface">
+            <section class="info-section">
+                <h2 class="section-title">PAINEL DE COMANDOS</h2>
+                <div class="rc-main-display">
+                    <div class="rc-visual-wrapper">
+                        <img src="controle_mavic.png" alt="Remote Controller" class="rc-image">
+                        <div class="fixed-tooltip t-left" style="top: 10%; left: 2%;">
+                            <div class="tooltip-header">JOYSTICK ESQUERDO</div>
+                            <div class="tooltip-body">Controla a altitude (Subir/Descer) e o eixo de guinada (Girar
+                                sobre o próprio eixo).</div>
+                        </div>
+                        <div class="fixed-tooltip t-right" style="top: 10%; right: 2%;">
+                            <div class="tooltip-header">JOYSTICK DIREITO</div>
+                            <div class="tooltip-body">Controla o movimento horizontal (Frente/Trás) e inclinação lateral
+                                (Esquerda/Direita).</div>
+                        </div>
+                    </div>
+                    <div class="rc-container">
+                        <div class="stick-box">
+                            <h3>JOYSTICK ESQUERDO (ANALOGICO ESQUERDO)</h3>
+                            <div class="joystick" id="stick-left">
+                                <div class="stick-knob"></div>
+                            </div>
+                            <p id="label-left" class="command-label">ESTACIONÁRIO</p>
+                        </div>
+                        <div class="stick-box">
+                            <h3>JOYSTICK DIREITO (ANALOGICO DIREITO)</h3>
+                            <div class="joystick" id="stick-right">
+                                <div class="stick-knob"></div>
+                            </div>
+                            <p id="label-right" class="command-label">ESTACIONÁRIO</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <section class="info-section">
+                    <div class="checklist-container">
+                        <div class="status-header">
+                            <h2 class="section-title">CHECKLIST PRÉ-VOO</h2>
+                            <div class="status-info">STATUS: <span id="system-status">CHECKLIST: 0/3</span></div>
+                        </div>
+                        <div class="checklist-items">
+                            <!-- GRUPO 1: HARDWARE -->
+                            <label class="check-box">
+                                <input type="checkbox" class="flight-check">
+                                <span class="custom-check"></span>
+                                <div>
+                                    <strong>1. INSPEÇÃO FÍSICA (HARDWARE)</strong>
+                                    <p style="font-size: 1rem; color: #ffffff;  margin: 2px 0 0 0;">Hélices, braços
+                                        travados, trava do gimbal e clique da bateria.</p>
+                                </div>
+                            </label>
+
+                            <!-- GRUPO 2: AMBIENTE -->
+                            <label class="check-box">
+                                <input type="checkbox" class="flight-check">
+                                <span class="custom-check"></span>
+                                <div>
+                                    <strong>2. AMBIENTE E SEGURANÇA (LOCAL)</strong>
+                                    <p style="font-size:1rem; color: #ffffff;  margin: 2px 0 0 0;">Piso plano, obstáculos
+                                        (fios/árvores), clima e distância de pessoas.</p>
+                                </div>
+                            </label>
+
+                            <!-- GRUPO 3: SISTEMAS -->
+                            <label class="check-box">
+                                <input type="checkbox" class="flight-check">
+                                <span class="custom-check"></span>
+                                <div>
+                                    <strong>3. VERIFICAÇÃO DE SISTEMAS (SOFTWARE)</strong>
+                                    <p style="font-size: 1rem; color: #ffffff; margin: 2px 0 0 0;">Calibração bússola,
+                                        GPS (10+ satélites), Home Point e Cartão SD.</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Seção Infantil -->
+                    <div>
+                        <section class="info-section manual-kids-section">
+                            <div class="kids-header">
+                                <h2 class="kids-title">✨ MEU LIVRO DE COLORIR: MINI DRONES! ✨</h2>
+                                <p class="kids-subtitle">Clique na capa para abrir e ver todas as páginas!</p>
+                            </div>
+
+                            <div class="manual-controls-kids">
+                                <div class="kids-prep">
+                                    <span>🎨</span>
+                                    <p>Pinte as 12 páginas do manual e torne-se um mestre piloto!</p>
+                                </div>
+                                <a href="Meu_Drone_De_Colorir.pdf" download class="download-btn-kids">
+                                    <span class="icon">🖨️</span> BAIXAR E IMPRIMIR
+                                </a>
+                            </div>
+
+                            <div class="pdf-cover-wrapper">
+                                <a href="Meu_Drone_De_Colorir.pdf" target="_blank"
+                                    title="Clique para abrir o manual completo">
+                                    <img src="capa_manual_colorir.png" alt="Capa do Manual de Colorir"
+                                        class="kids-book-cover">
+                                    <div class="cover-overlay">
+                                        <span>🔍 CLIQUE PARA ABRIR</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+
+                    <footer class="cyber-footer">
+                        <div class="footer-container">
+                            <div class="brand-box">
+                                <h2 class="brand-text">PROJETO DE DRONE <span class="year-highlight">2026</span></h2>
+                            </div>
+                            <div class="version-tag">v1.0.2-B</div>
+                        </div>
+                    </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

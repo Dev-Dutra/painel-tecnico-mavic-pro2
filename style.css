@@ -1,0 +1,927 @@
+:root {
+    --primary-blue: #00e5ff;
+    --neon-pink: #ff3d7a;
+    --neon-green: #00ff41;
+    --bg-dark: #020b16;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--primary-blue);
+    font-family: "Rajdhani", sans-serif;
+    overflow-x: hidden;
+}
+
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.grid-layer {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    bottom: -50%;
+    left: -50%;
+    background-image: linear-gradient(rgba(0, 231, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 231, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(60deg);
+    animation: moveGrid 20s infinite linear;
+}
+
+@keyframes moveGrid {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 50px;
+    }
+}
+
+.interface-header {
+    margin: 13px;
+    padding: 13px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 231, 255, 0.2);
+}
+
+.page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.section-title {
+    border-left: 4px solid var(--neon-pink);
+    padding-left: 15px;
+    margin: 20px 0;
+}
+
+
+.drone-grid {
+    display: flex;
+    flex-direction: column;
+    /* Isso empilha os itens em coluna */
+    align-items: center;
+    /* Centraliza as imagens horizontalmente */
+    gap: 20px;
+    /* Adiciona um espaço entre as duas vistas */
+}
+
+.drone-map {
+    transform: scale(1.3);
+    /* Aumenta em 20% o tamanho original */
+    transform-origin: center;
+
+}
+
+.floating-image {
+    max-width: 380px;
+}
+
+/* JOYSTICKS */
+.rc-container {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.joystick {
+    width: 120px;
+    height: 120px;
+    background: #000;
+    border: 2px solid var(--primary-blue);
+    border-radius: 50%;
+    position: relative;
+    margin: 10px auto;
+    cursor: crosshair;
+}
+
+.stick-knob {
+    width: 30px;
+    height: 30px;
+    background: var(--neon-pink);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s ease-out;
+    pointer-events: none;
+}
+
+.command-label {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 10px;
+    height: 1.2em;
+}
+
+.checklist-container {
+    background: rgba(0, 231, 255, 0.03);
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.status-info {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--primary-blue);
+}
+
+#system-status {
+    color: var(--status-yellow);
+    transition: all 0.3s;
+}
+
+.checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.check-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.hotspot {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cyber-btn {
+    width: 14px;
+    height: 14px;
+    background: var(--primary-blue);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--primary-blue);
+    transition: transform 0.3s;
+}
+
+.tooltip-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    bottom: 10px;
+    left: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.hotspot:hover .tooltip-wrapper {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.tooltip-line {
+    width: 60px;
+    height: 1px;
+    background: var(--primary-blue);
+    transform: rotate(-45deg);
+    transform-origin: left;
+}
+
+.cyber-tooltip {
+    background: rgba(2, 11, 22, 0.95);
+    border: 1px solid var(--primary-blue);
+    padding: 12px;
+    width: 220px;
+    margin-left: -5px;
+    box-shadow: 0 0 20px rgba(0, 231, 255, 0.2);
+}
+
+.cyber-tooltip strong {
+    color: var(--primary-blue);
+    display: block;
+    border-bottom: 1px solid rgba(0, 231, 255, 0.2);
+    margin-bottom: 5px;
+}
+
+.cyber-tooltip p {
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: none;
+    margin: 0;
+}
+
+/* --- TOOLTIP PADRÃO (Abre para a Direita) --- */
+.tooltip-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    bottom: 12px;
+    left: 12px;
+    /* Nasce da esquerda para a direita */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.tooltip-line {
+    width: 50px;
+    height: 1px;
+    background: var(--primary-blue);
+    transform: rotate(-45deg);
+    /* Linha sobe para a direita */
+    transform-origin: left;
+}
+
+/* --- TOOLTIP INVERTIDO (Para pontos na direita da tela) --- */
+.tooltip-wrapper.reverse {
+    left: auto;
+    /* Remove o alinhamento à esquerda */
+    right: 12px;
+    /* Alinha à direita da bolinha */
+    flex-direction: row-reverse;
+    /* Inverte a ordem: Caixa | Linha | Bolinha */
+}
+
+.reverse .tooltip-line {
+    transform: rotate(45deg);
+    /* Inverte a inclinação da linha */
+    transform-origin: right;
+    /* A linha agora nasce da direita para a esquerda */
+}
+
+.reverse .cyber-tooltip {
+    margin-left: 0;
+    margin-right: -5px;
+    /* Ajuste fino de encaixe na linha invertida */
+}
+
+/* Efeito de exibição no Hover */
+.hotspot:hover .tooltip-wrapper {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+* PAINEL LATERAL */ .side-panel {
+    background: rgba(0, 231, 255, 0.03);
+    border: 1px solid var(--primary-blue);
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    min-height: 550px;
+}
+
+.panel-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, rgba(0, 231, 255, 0.15) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(0, 231, 255, 0.2);
+    padding: 15px;
+}
+
+#panel-img {
+    max-height: 120px;      /* Limita o tamanho da imagem da bateria */
+    width: auto;
+    margin: 0 auto;
+}
+.panel-body {
+    padding: 25px;
+}
+
+.panel-tag {
+    background: var(--neon-pink);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.detail-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.detail-desc {
+    text-transform: none;
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    border-left: 2px solid var(--primary-blue);
+    padding-left: 15px;
+}
+
+.specs-grid {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.spec-label {
+    font-size: 0.7rem;
+    color: var(--primary-blue);
+    display: block;
+}
+
+.spec-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+/* PAINEL LATERAL */
+.side-panel {
+    background: rgba(0, 231, 255, 0.03);
+    border: 1px solid var(--primary-blue);
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    min-height: 550px;
+    height: 100%;           /* Faz ela acompanhar a altura do container pai */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.panel-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, rgba(0, 231, 255, 0.15) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(0, 231, 255, 0.2);
+    padding: 15px;
+}
+
+#panel-img {
+ max-height: 220px;      /* Limita o tamanho da imagem da bateria */
+    width: auto;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 15px var(--primary-blue));
+    object-fit: contain;
+    transition: 0.4s;
+}
+
+.panel-body {
+    padding: 25px;
+    font-size: 0.85rem;     /* Diminui levemente a fonte para ganhar espaço */
+    line-height: 1.2;
+}
+
+.panel-tag {
+    background: var(--neon-pink);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.detail-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.detail-desc {
+    text-transform: none;
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 1rem;
+    border-left: 2px solid var(--primary-blue);
+    padding-left: 15px;
+}
+
+.specs-grid {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.spec-label {
+    font-size: 0.7rem;
+    color: var(--primary-blue);
+    display: block;
+}
+
+.spec-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Garante o layout em colunas para o topo e empilhado para o fundo */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    /* Drone na esquerda, Painel na direita */
+    gap: 30px;
+    align-items: start;
+}
+
+/* Ajuste para o conteúdo do painel suavizar a troca */
+#side-panel-content {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsividade: se a tela for pequena, vira uma coluna só */
+@media (max-width: 1000px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .side-panel {
+        position: relative;
+        top: 0;
+    }
+}
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 8px 12px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    cursor: pointer;
+    margin: 10px;
+    width: calc(100% - 20px);
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.reset-btn:hover {
+    background: var(--neon-pink);
+    color: #fff;
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+/* CONTAINER DO CONTROLE */
+.rc-main-display {
+    text-align: center;
+    background: rgba(0, 231, 255, 0.02);
+    border: 1px solid rgba(0, 231, 255, 0.1);
+    padding: 40px 20px;
+    margin-bottom: 25px;
+    position: relative;
+    border-radius: 4px;
+}
+
+.rc-visual-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+}
+
+.rc-image {
+    width: 80%;
+    /* Ajuste o tamanho da imagem do controle aqui */
+    filter: drop-shadow(0 0 25px rgba(0, 231, 255, 0.15));
+    opacity: 0.9;
+}
+
+/* ESTILO TOOLTIP FIXO */
+.fixed-tooltip {
+    position: absolute;
+    width: 200px;
+    background: rgba(2, 11, 22, 0.95);
+    border: 1px solid var(--primary-blue);
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0, 231, 255, 0.1);
+}
+
+.tooltip-header {
+    background: var(--primary-blue);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+}
+
+.tooltip-body {
+    padding: 10px;
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    line-height: 1.3;
+}
+
+/* SETA DO TOOLTIP APONTANDO PARA O ANALÓGICO */
+.fixed-tooltip::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(2, 11, 22, 0.95);
+    border-right: 1px solid var(--primary-blue);
+    border-bottom: 1px solid var(--primary-blue);
+}
+
+.t-left::after {
+    bottom: -7px;
+    right: 30px;
+    /* Aponta para o analógico esquerdo */
+    transform: rotate(45deg);
+}
+
+.t-right::after {
+    bottom: -7px;
+    left: 30px;
+    /* Aponta para o analógico direito */
+    transform: rotate(45deg);
+}
+
+.rc-summary {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #888;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid rgba(0, 231, 255, 0.1);
+    padding-top: 15px;
+    line-height: 1.5;
+}
+
+/* --- NOVA SEÇÃO MANUAL INFANTIL --- */
+:root {
+    /* Cores infantis mas combinando com o HUD */
+    --kids-purple: #9d4edd;
+    --kids-orange: #ff9e00;
+    --kids-yellow: #ffea00;
+}
+
+.manual-kids-section {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    /* Fundo quase transparente */
+    border-radius: 20px;
+    /* Bordas bem arredondadas */
+    border: 3px dashed var(--primary-blue);
+    /* Borda tracejada "fofa" */
+    box-shadow: 0 0 20px rgba(0, 231, 255, 0.1);
+}
+
+/* TÍTULOS FOFOS */
+.kids-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.kids-title {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--kids-yellow);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--kids-yellow);
+}
+
+.kids-subtitle {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* CONTROLES DIVERTIDOS */
+.manual-controls-kids {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(157, 78, 221, 0.1);
+    /* Fundo roxo suave */
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.kids-prep {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.kids-prep span {
+    font-size: 1.5rem;
+}
+
+/* BOTÃO DE BAIXAR INFANTIL */
+.download-btn-kids {
+    background: var(--kids-orange);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    /* Botão pílula */
+    font-family: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 0px #b76e00;
+    /* Sombra sólida "style desenho" */
+}
+
+.download-btn-kids:hover {
+    transform: translateY(-3px);
+    /* Levanta o botão */
+    box-shadow: 0 6px 15px rgba(255, 158, 0, 0.4);
+}
+
+.download-btn-kids:active {
+    transform: translateY(1px);
+    /* Baixa ao clicar */
+    box-shadow: 0 2px 0px #b76e00;
+}
+
+/* VIEWER PDF KIDS */
+.pdf-viewer-container-kids {
+    border: 2px solid var(--kids-purple);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .manual-controls-kids {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* ESTILO DA CAPA DO LIVRO */
+.pdf-cover-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 5px solid var(--kids-purple);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-cover-wrapper:hover {
+    transform: scale(1.03) rotate(1deg);
+    /* Leve inclinação ao passar o mouse */
+    box-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+}
+
+.kids-book-cover {
+    width: 100%;
+    display: block;
+    filter: brightness(0.9);
+    transition: 0.3s;
+}
+
+.pdf-cover-wrapper:hover .kids-book-cover {
+    filter: brightness(1.1);
+}
+
+/* TEXTO QUE APARECE AO PASSAR O MOUSE NA FOTO */
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(157, 78, 221, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.pdf-cover-wrapper:hover .cover-overlay {
+    opacity: 1;
+}
+
+.cover-overlay span {
+    background: var(--kids-yellow);
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.minimal-cyber-footer {
+    margin-top: 100px;
+    padding: 40px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0, 231, 255, 0.03), transparent);
+}
+
+.footer-line-separator {
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 231, 255, 0.2), transparent);
+    margin-bottom: 30px;
+}
+
+.footer-main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* BRANDING */
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+.footer-title .year {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+/* STATUS */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon-green);
+    animation: pulseSoft 2s infinite;
+}
+
+.status-text {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+/* VERSÃO */
+.version-label {
+    font-size: 0.8rem;
+    color: var(--primary-blue);
+    border-left: 1px solid var(--neon-pink);
+    padding-left: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+@keyframes pulseSoft {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .footer-main-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .version-label {
+        border-left: none;
+        border-top: 1px solid var(--neon-pink);
+        padding-left: 0;
+        padding-top: 10px;
+    }
+}
+
+/* Estilo base do botão (bolinha) */
+.cyber-btn {
+    width: 15px;
+    height: 15px;
+    background-color: #00f2ffa4;
+    /* Cor ciano tecnológica */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+/* Criando o efeito de pulso com pseudo-elemento */
+.cyber-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #00f2ff;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.drone-map {
+    position: relative;
+    display: block;        /* Garante que um fique abaixo do outro */
+    margin: 40px auto;     /* 40px de espaço em cima/baixo e centraliza */
+    width: fit-content;    /* Faz o container ter exatamente o tamanho da imagem */
+    text-align: center;
+}
+
+.floating-image {
+    width: 350px;          /* Define um tamanho fixo menor para dar respiro */
+    height: auto;
+    display: block;
+}
+
+/* Animação do anel expandindo */
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+
+    80%,
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Opcional: Efeito de brilho interno variando */
+.cyber-btn {
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.5);
+    }
+}
